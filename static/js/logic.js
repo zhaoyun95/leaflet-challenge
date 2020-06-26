@@ -42,9 +42,9 @@ function getColor(d) {
 function createFeatures(earthquakeData, boundariesData) {
 
     function createPopups(feature, layer) {
-        layer.bindPopup("<h3>" + feature.properties.place +
-        "</h3><hr><p>" + new Date(feature.properties.time) + "</p><p>magnitude: " +
-        feature.properties.mag + "</p>");
+        layer.bindPopup("<div>Magnitude: " + feature.properties.mag +
+         "</div><hr><div>" + new Date(feature.properties.time) + "</div><div>" +
+         feature.properties.place + "</div>");
     }
 
     function createMarkerOptions(feature) {
