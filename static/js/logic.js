@@ -83,7 +83,7 @@ function createFeatures(earthquakeData, boundariesData) {
 
         style: function(feature) {
             return {
-                color: "red",
+                color: "cyan",
                 fillColor: "blue",
                 fillOpacity: 0.1,
 
