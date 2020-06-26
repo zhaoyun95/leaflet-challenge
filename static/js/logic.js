@@ -195,7 +195,7 @@ function createMap(earthquakes, faultLines) {
     // Add the layer control to the map
     // This is the control menu on the upper right corner
     L.control.layers(baseMaps, overlayMaps, {
-        collapsed: false
+        collapsed: true
     }).addTo(myMap);
 
     // see Day 2 Activity 4 for legend
