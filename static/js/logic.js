@@ -184,8 +184,8 @@ function createMap(earthquakes, faultLines) {
             37.09, -95.71
         ],
         zoom: 5,
-        // stretmap: L.tileLayer layer
-        // earthquakes: L.GeoJSON layer
+        // satellite: L.tileLayer layer
+        // faultLines, earthquakes: L.GeoJSON layer
         // these are the active layers
         layers: [satellite, faultLines, earthquakes]
     });
@@ -210,10 +210,10 @@ function createMap(earthquakes, faultLines) {
     
         // loop through manitudes and generate a label with a colored square for each internal
         // need css in style.css to show the colored squares
-        for (var i = 0; i < magnitudes.length; i++) {
+        for (var i = magnitudes.length -1; i >= 0; i--) {
             div.innerHTML +=
                 '<i style="background:' + getColor(magnitudes[i] + 1) + '"></i> <span>' +
-                magnitudes[i] + (magnitudes[i + 1] ? '&ndash;' + magnitudes[i + 1] + '</span><br>' : '+</span>');
+                magnitudes[i] + (magnitudes[i + 1] ? '&ndash;' + magnitudes[i + 1] + '</span><br>' : '+</span><br>');
         }
 
         return div;
