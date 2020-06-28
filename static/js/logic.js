@@ -1,8 +1,4 @@
-// earthquake data for last day;
-// var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson"
-
-// earthquake data for last hour;
-//var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson";
+// James Ye; June 2020
 
 // earthquake data for the last 7 days
 var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
@@ -91,29 +87,6 @@ function createFeatures(earthquakeData, boundariesData) {
             };
         },
 
-        // Called on each feature
-        onEachFeature: function(feature, layer) {
-            layer.on({
-                mouseover: function(event) {
-                    layer = event.target;
-                    layer.setStyle({
-                        fillOpacity: 0.2
-                    });
-                },
-
-                mouseout: function(event) {
-                    layer = event.target;
-                    layer.setStyle({
-                        fillOpacity: 0.1
-                    })
-                },
-
-                click: function(event) {
-                    myMap.fitBounds(event.target.getBounds());
-                }
-            })
-        }
-
     });
 
     createMap(earthquakes, faultLines);
@@ -181,7 +154,7 @@ function createMap(earthquakes, faultLines) {
     // Create our map, giving it the streetmap and earthquakes layers to display on load
     var myMap = L.map("map", {
         center: [
-            37.09, -95.71
+            37.7577627,-122.4726193  // San Francisco, CA
         ],
         zoom: 5,
         // satellite: L.tileLayer layer
@@ -204,10 +177,9 @@ function createMap(earthquakes, faultLines) {
     var legend = L.control({position: "bottomright"});
   
     legend.onAdd = function() {
-        var div = L.DomUtil.create("div", "info legend"),
-            magnitudes = [0,1,2,3,4,5],
-            labels = [];
-    
+        var div = L.DomUtil.create("div", "info legend");
+        var magnitudes = [0,1,2,3,4,5];
+        div.innerHTML = "<span>Magnitude </span><br>";
         // loop through manitudes and generate a label with a colored square for each internal
         // need css in style.css to show the colored squares
         for (var i = magnitudes.length -1; i >= 0; i--) {
